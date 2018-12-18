@@ -1,32 +1,51 @@
-import React from 'react';
-import { StyleSheet, Text, View,TouchableOpacity } from 'react-native';
+import React,{Component} from 'react';
+import { AppRegistry,StyleSheet, Text, View,TouchableOpacity } from 'react-native';
+
 
 
 export default class App extends React.Component {
-/*
+
 constructor(props){
   super(props);
   this.state={
     text:"Start",
-    count=1,
-
+    count:0,
+  
   }
-}*/
+  console.log("okay")
+}
+click=()=>{this.state.count>2?this.state.count=0:null
+  return this.state.count==0?text="Start":this.state.count==1?text="Pause":this.state.count==2?text="Reset":null
+}
 
+onPress = () => {
+  this.setState({
+    count: this.state.count+1,
+    }
+  
+  )
+console.log("Ggg")}
 
   render() {
     return (
       <View style={styles.container}>
-       <TouchableOpacity onPress={this.setState}>
+       <TouchableOpacity onPress={this.onPress}
+       >
         <View style={styles.mainarea}>
           <View style={styles.circle}>
+          
+          
           <Text style={styles.circleText}>00:00</Text></View>
          
-          <Text style={styles.Tap}>Click to Start</Text>
+        <Text style={styles.Tap}>
+           { this.click()}    
+          </Text>
         </View>
         </TouchableOpacity>
       </View>
+     
     );
+    
   }
 }
 
